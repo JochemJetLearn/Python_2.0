@@ -2,7 +2,7 @@ while True:
     try:
         x = int(input("Num x: "))
         y = int(input("Num y: "))
-        op = input("Operation or QUIT (+|-|*|/): ")
+        op = input("Operation or QUIT (+|-|*|/|**): ")
         if op == "+":
             print(x+y)
         elif op == "-":
@@ -11,6 +11,8 @@ while True:
             print(x*y)
         elif op == "/":
             print(x/y)
+        elif op == "**":
+            print(x**y)
         elif op == "QUIT":
             break
     except ValueError:
