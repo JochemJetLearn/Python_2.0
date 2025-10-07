@@ -18,3 +18,4 @@ while True:
     if word == guessed:
         print("Congrats, you win")
         break
+print(f"you win, stats:\n -correct: {stats[0]}\n -incorrect: {stats[1]}")
