@@ -2,7 +2,7 @@ import random
 
 words = ["open", "enter", "hydroneer", "programming", "netherlands", "super", "high", "snake", "python", "java", "coding", "script"]
 
-word = ["h","i","g","h"] # list(random.choice(words))
+word = list(random.choice(words))
 guessed = []
 for i in word:
     guessed.append("_")
