@@ -101,21 +101,62 @@ def place(maze):
                 box.up()
                 box.shape("square")
                 box.goto(screenx, screeny)
+                boxes.append(box)
             elif char == "F":
-                finish = turtle.Turtle()
-                finish.speed(100)
-                finish.up()
-                finish.shape("circle")
-                finish.color("green")
-                finish.goto(screenx, screeny)
+                finishpos.speed(100)
+                finishpos.up()
+                finishpos.shape("circle")
+                finishpos.color("green")
+                finishpos.goto(screenx, screeny)
 
 def printmaze(maze):
     for i in range(len(maze)):
         print("".join(maze[i]))
 
+boxes = []
+finishpos = turtle.Turtle()
+
 maze = generate(height,width)
 printmaze(maze)
 place(maze)
+
+def up():
+    newx = player.xcor()
+    newy = player.ycor() + 24
+    if valid(newx, newy):
+        player.goto(newx, newy)
+        finish(newx, newy)
+
+def down():
+    newx = player.xcor()
+    newy =  player.ycor() - 24
+    if valid(newx, newy):
+        player.goto(newx, newy)
+        finish(newx, newy)
+
+def left():
+    newx = player.xcor() - 24
+    newy = player.ycor()
+    if valid(newx, newy):
+        player.goto(newx, newy)
+        finish(newx, newy)
+
+def right():
+    newx = player.xcor() + 24
+    newy = player.ycor()
+    if valid(newx, newy):
+        player.goto(newx, newy)
+        finish(newx, newy)
+
+def valid(x, y):
+    for i in boxes:
+        if i.xcor() == x and i.ycor() == y:
+            return False
+    return True
+
+def finish(x, y):
+    if finishpos.xcor() == x and finishpos.ycor() == y:
+        print("Finished maze!")
 
 # Turtle setup
 player = turtle.Turtle()
@@ -124,5 +165,11 @@ player.color("blue")
 player.penup()
 player.speed(0)
 player.goto(-264, 264)
+
+screen.listen()
+screen.onkey(up, "w")
+screen.onkey(down, "s")
+screen.onkey(left, "a")
+screen.onkey(right, "d")
 
 screen.mainloop()
