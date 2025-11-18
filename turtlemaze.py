@@ -1,17 +1,17 @@
 import turtle, random
 
-while True:
-    try:
-        height = int(input("What is the height of the maze you want to solve(odd number)? "))
-        break
-    except:
-        pass
-while True:
-    try:
-        width = int(input("What is the width of the maze you want to solve (odd number)? "))
-        break
-    except:
-        pass
+#while True:
+#    try:
+#        height = int(input("What is the height of the maze you want to solve(odd number)? "))
+#        break
+#    except:
+#        pass
+#While True:
+#    try:
+#        width = int(input("What is the width of the maze you want to solve (odd number)? "))
+#        break
+#    except:
+#        pass
 
 # Screen setup
 screen = turtle.Screen()
@@ -22,21 +22,23 @@ screen.setup(width=600, height=600)
 #turtle.shape("square")
 #turtle.speed(100)
 # Maze grid
-# maze = [
-#     "XXXXXXXXXXXXXXX",
-#     "X   X         X",
-#     "X XXXXX XXXXX X",
-#     "X X     X     X",
-#     "X X XXX X XXX X",
-#     "X X   X X X   X",
-#     "X XXX X X X XXX",
-#     "X     X X X   X",
-#     "XXXXX X X X XXX",
-#     "X     X   X   X",
-#     "X XXXXX XXXXX X",
-#     "X             X",
-#     "XXXXXXXXXXXXX F"
-# ]
+maze = [
+    "XXXXXXXXXXXXXXX",
+    "X     C       X",
+    "X X XXX X X XXX",
+    "X   X   X X   X",
+    "X XXX X X XXX X",
+    "X X   X X   X X",
+    "X X XXXXXXX X X",
+    "X X X XF  X X X",
+    "X X X XXX X X X",
+    "X X   X X   X X",
+    "X XXX X XXXXX X",
+    "X   X X X   X X",
+    "XXX X X X X X X",
+    "X         X   X",
+    "XXXXXXXXXXXXXXX"
+ ]
 
 import random
 
@@ -108,6 +110,13 @@ def place(maze):
                 finishpos.shape("circle")
                 finishpos.color("green")
                 finishpos.goto(screenx, screeny)
+            elif char == "C":
+                crack = turtle.Turtle()
+                crack.speed(100)
+                crack.up()
+                crack.shape("square")
+                crack.color("#3D3D3D")
+                crack.goto(screenx, screeny)
 
 def printmaze(maze):
     for i in range(len(maze)):
@@ -116,8 +125,7 @@ def printmaze(maze):
 boxes = []
 finishpos = turtle.Turtle()
 
-maze = generate(height,width)
-printmaze(maze)
+# maze = generate(height,width)
 place(maze)
 
 def up():
