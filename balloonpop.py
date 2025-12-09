@@ -13,15 +13,15 @@ def newballoon():
     balloon.up()
     balloon.shape("circle")
     balloon.color(random.color())
-    balloon.goto(random.randint(-225, 225), 225)
+    balloon.goto(random.randint(-450, 450), 450)
     balloons.append(balloon)
     balloonspeed.append(random.randint(2, 7)/2)
 
 def move(dx):
-    dart.goto(dart.xcor()+dx, -225)
+    dart.goto(dart.xcor()+dx, -450)
 
 screen = turtle.Screen()
-screen.setup(500, 500)
+screen.setup(1000, 1000)
 screen.bgcolor("lightblue")
 maxballoons = 15
 dart = turtle.Turtle()
@@ -30,7 +30,7 @@ dart.up()
 dart.color("red")
 dart.shape("triangle")
 dart.left(90)
-dart.goto(0, -225)
+dart.goto(0, -450)
 
 screen.listen()
 screen.onkeypress(lambda: move(-15), "a")
@@ -43,13 +43,13 @@ stats = {
 infot = turtle.Turtle()
 infot.up()
 infot.hideturtle()
-infot.goto(-245, 205)
+infot.goto(-450, 410)
 tps = 0
 secstart = time.time()
 score = 0
 while True:
     for i in balloons:
-        if i.ycor() < -220:
+        if i.ycor() < -440:
             if dart.distance(i) < 20:
                 score += 2
                 print("Balloon hit! (+2)")
@@ -70,11 +70,11 @@ while True:
         chance = random.random()
         if chance < 0.02:
             newballoon()
-    if score > 9:
+    if score > 29:
         break
     if time.time() - secstart > 1:
         infot.clear()
-        infot.write(f"Score: {score}\nTPS: {tps}\nTotal balloons: {len(balloons)}")
+        infot.write(f"Score: {score}\nTPS: {tps}\nTotal balloons: {len(balloons)}", font=("arial", 16))
         tps = 0
         secstart = time.time()
     else:
