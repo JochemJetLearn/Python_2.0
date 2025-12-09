@@ -12,7 +12,7 @@ def newballoon():
     balloon.speed(0)
     balloon.up()
     balloon.shape("circle")
-    balloon.color(random.color())
+    balloon.color(color())
     balloon.goto(random.randint(-450, 450), 450)
     balloons.append(balloon)
     balloonspeed.append(random.randint(2, 7)/2)
@@ -81,3 +81,4 @@ while True:
         tps += 1
 print("You win, stats:")
 print(f" Hit balloons: {stats["hit"]}\n Missed balloons: {stats["miss"]}\n Total balloons: {stats["total"]}")
+
